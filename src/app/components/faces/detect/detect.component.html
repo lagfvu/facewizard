@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h2>Detect Module</h2>
+</div>
+<div class="sub-header">
+  <div class="panel panel-info">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Panel title</h3>
+    </div>
+    <image-upload
+      [preview]="true"
+      [max]="1"
+      [buttonCaption]="'Select Your Image!'"
+      [dropBoxMessage]="'Or Drop your image here!'"
+      (onFileUploadFinish)="imageUploaded($event)"></image-upload>
+    <div class="panel-body">
+      <span class="page-header">Select Features to Detect</span>
+        <form>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">Age
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">Glassed
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">Facial Hair
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">Smile
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">Head Pose
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">Gender
+            </label>
+          </div>
+        </form>
+    </div>
+
+    <div class="panel-footer">
+      <button class="btn btn-default" type="submit">Button</button>
+    </div>
+  </div>
+</div>

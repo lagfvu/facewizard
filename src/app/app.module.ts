@@ -4,17 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import {routing, appRoutingProviders} from "./routers/app.routes";
+import {Auth} from "./services/auth.service";
+import {DetectComponent} from "./components/faces/detect/detect.component";
+import {UploadComponent} from "./components/faces/upload/upload.component";
+import {GroupComponent} from "./components/faces/group/group.component";
+import {VerifyComponent} from "./components/faces/verify/verify.component";
+import {FacesComponent} from "./components/faces/faces.component";
+import {HomeComponent} from "./components/home/home.component";
+import {ImageUploadModule} from "angular2-image-upload";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,HomeComponent,FacesComponent,VerifyComponent,GroupComponent,UploadComponent,DetectComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing,
+    ImageUploadModule.forRoot()
   ],
-  providers: [],
+  providers: [appRoutingProviders,Auth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h2>Group Module</h2>
+</div>
+<div class="sub-header">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Panel title</h3>
+    </div>
+    <div class="panel-body">
+      <image-upload
+        [preview]="true"
+        [max]="100"
+        [buttonCaption]="'Select Your Images here!'"
+        [dropBoxMessage]="'Or Drop your images here!'"
+        (onFileUploadFinish)="imageUploaded($event)"></image-upload>
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-default" type="submit">Button</button>
+    </div>
+  </div>
+</div>
