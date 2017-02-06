@@ -44,7 +44,6 @@ export class DetectComponent implements OnInit
     if(this.image)
     {
       this.toastr.success('Yay!','Image Upload Successful');
-      console.log(model,this.image);
       this.state = true;
     }
     else

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {TrainingModel} from "../../../models/train.model";
 import {ImageModel} from "../../../models/image.model";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector: 'app-train',
@@ -14,7 +15,10 @@ export class TrainComponent implements OnInit {
   imageArray:any[] = [];
   currentImage:ImageModel;
 
-  constructor() { }
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef)
+  {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit()
   {
@@ -24,23 +28,21 @@ export class TrainComponent implements OnInit {
       personName:''
     }
 
-    this.currentImage = {
-      name:'',
-      url:''
-    }
   }
 
   imageUploaded($event):void
   {
-    this.currentImage.name = $event.file.name;
-    this.currentImage.url = $event.file.src;
-
     this.imageArray.push(
       this.currentImage =
         {
         name:$event.file.name,
         url:$event.src
       })
+  }
+
+  imageRemoved($event):void{
+    this.currentImage = null;
+    this.toastr.info('Image removed');
   }
 
   trainer(model:TrainingModel):void
