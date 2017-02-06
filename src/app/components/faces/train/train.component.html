@@ -1,3 +1,126 @@
-<p>
-  train works!
-</p>
+<div class="page-header">
+  <h2>Train Module</h2>
+</div>
+<div class="sub-header">
+  <div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-pills nav-justified" role="tablist">
+      <li role="presentation" class="active"><a href="#new" aria-controls="home" role="tab" data-toggle="tab">New Groups</a></li>
+      <li role="presentation"><a href="#list" aria-controls="profile" role="tab" data-toggle="tab">List Groups</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="new">
+        <form (ngSubmit)="trainer(detectFeaturesForm.value)"  #detectFeaturesForm="ngForm">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Add a new Group</h3>
+            </div>
+            <div class="panel-body">
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel panel-default">
+
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Create a Group
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">Group Name</span>
+                        <input [(ngModel)]="train.groupName" name="groupName" type="text" class="form-control" placeholder="Enter the group name here" aria-describedby="basic-addon1">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></span>
+                      </div>
+                      <br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1.1">Group Description</span>
+                        <input [(ngModel)]="train.groupDesc" name="groupDesc" type="text" class="form-control" placeholder="Enter the group description here" aria-describedby="basic-addon1">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Add Person Name
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon2">Person Name</span>
+                        <input [(ngModel)]="train.personName" name="personName" type="text" class="form-control" placeholder="Enter the persons name here" aria-describedby="basic-addon2">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Add face/faces here
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                      <image-upload
+                        [preview]="true"
+                        [max]="100"
+                        [buttonCaption]="'Select Your Images!'"
+                        [dropBoxMessage]="'Or Drop your images here!'"
+                        (onFileUploadFinish)="imageUploaded($event)"
+                        (onRemove)="imageRemoved($event)"></image-upload>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <button class="btn btn-default" type="submit">Train</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="list">
+       <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">
+            List of Groups
+          </div>
+        </div>
+         <div class="panel-body">
+           <div class="table-responsive">
+             <table class="table">
+               <thead>
+               <tr>
+                 <th>Age</th>
+                 <th>Gender</th>
+                 <th>Details</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+                 <td>John</td>
+                 <td>Doe</td>
+                 <td>john@example.com</td>
+               </tr>
+               </tbody>
+             </table>
+           </div>
+         </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

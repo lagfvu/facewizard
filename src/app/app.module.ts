@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {routing, appRoutingProviders} from "./routers/app.routes";
-import {Auth} from "./services/auth.service";
 import {DetectComponent} from "./components/faces/detect/detect.component";
 import {UploadComponent} from "./components/faces/upload/upload.component";
 import {GroupComponent} from "./components/faces/group/group.component";
@@ -22,15 +21,16 @@ import { IdentifyComponent } from './components/faces/identify/identify.componen
 
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent,FacesComponent,VerifyComponent,GroupComponent,UploadComponent,DetectComponent, SimilarityComponent, TrainComponent, IdentifyComponent
-  ],
+    AppComponent,HomeComponent,FacesComponent,
+    VerifyComponent,GroupComponent,UploadComponent
+    ,DetectComponent, SimilarityComponent, TrainComponent,
+    IdentifyComponent],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
     ImageUploadModule.forRoot(),
-
     ToastModule.forRoot()
   ],
   providers: [appRoutingProviders,DemoAuth,fileUpload],
