@@ -14,7 +14,7 @@
             [max]="1"
             [buttonCaption]="'Select Query Image!'"
             [dropBoxMessage]="'Or Drop your Query image here!'"
-            (onFileUploadFinish)="imageUploaded($event)"></image-upload>
+            (onFileUploadFinish)="queryUploaded($event)"></image-upload>
         </div>
         <div class="col-md-6 col-sm-12 col-lg-6">
           <image-upload
@@ -22,7 +22,7 @@
             [max]="1"
             [buttonCaption]="'Select Verification Image!'"
             [dropBoxMessage]="'Or Drop your verification image here!'"
-            (onFileUploadFinish)="imageUploaded($event)"></image-upload>
+            (onFileUploadFinish)="verifyUploaded($event)"></image-upload>
         </div>
       </div>
       </div>

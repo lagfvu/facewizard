@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {fileUpload} from "../../../services/file.upload.service";
 
 
 @Component({
@@ -9,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupComponent implements OnInit
 {
-  private image:any;
-  constructor() { }
+  private images:any;
+  constructor(private uploader:fileUpload) { }
 
   ngOnInit() {}
+
+  imageUploaded($event:any):void
+  {
+    this.uploader.test($event);
+  }
 }

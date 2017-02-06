@@ -9,8 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifyComponent implements OnInit
 {
-  private image:any;
+  private query:any;
+  private verify:any;
+
+
   constructor() { }
 
   ngOnInit() {}
+
+  queryUploaded($event):void
+  {
+    console.log('query file is '+$event.file.name);
+  }
+
+  verifyUploaded($event):void
+  {
+    console.log('verify file is '+$event.file.name);
+  }
 }

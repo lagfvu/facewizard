@@ -7,55 +7,57 @@
     <div class="panel-heading">
       <h3 class="panel-title">Panel title</h3>
     </div>
+
     <image-upload
       [preview]="true"
       [max]="1"
       [buttonCaption]="'Select Your Image!'"
       [dropBoxMessage]="'Or Drop your image here!'"
       (onFileUploadFinish)="imageUploaded($event)"></image-upload>
+
     <div class="panel-body">
       <span class="page-header">Select Features to Detect</span>
-        <form>
+        <form (ngSubmit)="detect(detectFeaturesForm.value)" #detectFeaturesForm="ngForm">
           <div class="checkbox">
-            <label>
-              <input type="checkbox">Age
+            <label class="active">
+              <input type="checkbox" [(ngModel)]="features.age" name="age" checked="checked">Age
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox">Glassed
+              <input type="checkbox" [(ngModel)]="features.glassed" name="glassed" >Glassed
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox">Facial Hair
+              <input type="checkbox" [(ngModel)]="features.facial_hair" name="facial_hair" >Facial Hair
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox">Smile
+              <input type="checkbox" [(ngModel)]="features.smile" name="smile" >Smile
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox">Head Pose
+              <input type="checkbox" [(ngModel)]="features.head_pose" name="head_pose" >Head Pose
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox">Gender
+              <input type="checkbox" [(ngModel)]="features.gender" name="gender" >Gender
             </label>
           </div>
+
+          <hr>
+          <button class="btn btn-default" type="submit">Button</button>
         </form>
     </div>
 
-    <div class="panel-footer">
-      <button class="btn btn-default" type="submit">Button</button>
-    </div>
   </div>
 </div>

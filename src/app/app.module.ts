@@ -13,6 +13,8 @@ import {VerifyComponent} from "./components/faces/verify/verify.component";
 import {FacesComponent} from "./components/faces/faces.component";
 import {HomeComponent} from "./components/home/home.component";
 import {ImageUploadModule} from "angular2-image-upload";
+import {DemoAuth} from "./services/demo.auth.service";
+import {fileUpload} from "./services/file.upload.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import {ImageUploadModule} from "angular2-image-upload";
     routing,
     ImageUploadModule.forRoot()
   ],
-  providers: [appRoutingProviders,Auth],
+  providers: [appRoutingProviders,DemoAuth,fileUpload],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

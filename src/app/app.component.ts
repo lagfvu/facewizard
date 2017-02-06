@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DemoAuth} from "./services/demo.auth.service";
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent
 {
-  title = 'app works!';
-
-  clicked():void {
-    alert('clicked');
+  constructor(private auth:DemoAuth)
+  {
   }
+
+
+
 }
