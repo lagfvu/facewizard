@@ -16,10 +16,13 @@ import {ImageUploadModule} from "angular2-image-upload";
 import {DemoAuth} from "./services/demo.auth.service";
 import {fileUpload} from "./services/file.upload.service";
 import {ToastModule} from "ng2-toastr";
+import { SimilarityComponent } from './components/faces/similarity/similarity.component';
+import { TrainComponent } from './components/faces/train/train.component';
+import { IdentifyComponent } from './components/faces/identify/identify.component';
 
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent,FacesComponent,VerifyComponent,GroupComponent,UploadComponent,DetectComponent
+    AppComponent,HomeComponent,FacesComponent,VerifyComponent,GroupComponent,UploadComponent,DetectComponent, SimilarityComponent, TrainComponent, IdentifyComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import {ToastModule} from "ng2-toastr";
     HttpModule,
     routing,
     ImageUploadModule.forRoot(),
+
     ToastModule.forRoot()
   ],
   providers: [appRoutingProviders,DemoAuth,fileUpload],

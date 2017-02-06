@@ -6,6 +6,9 @@ import {DetectComponent} from "../components/faces/detect/detect.component";
 import {VerifyComponent} from "../components/faces/verify/verify.component";
 import {UploadComponent} from "../components/faces/upload/upload.component";
 import {GroupComponent} from "../components/faces/group/group.component";
+import {SimilarityComponent} from "../components/faces/similarity/similarity.component";
+import {TrainComponent} from "../components/faces/train/train.component";
+import {IdentifyComponent} from "../components/faces/identify/identify.component";
 
 
 const appRoutes: Routes =
@@ -31,6 +34,18 @@ const appRoutes: Routes =
           {
             path: 'group',
             component: GroupComponent
+          },
+          {
+            path: 'similarity',
+            component: SimilarityComponent
+          },
+          {
+            path: 'train',
+            component: TrainComponent
+          },
+          {
+            path: 'identify',
+            component: IdentifyComponent
           },
           {
             path:'',
