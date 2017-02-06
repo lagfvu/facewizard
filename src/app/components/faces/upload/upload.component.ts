@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ToastsManager} from "ng2-toastr";
-
+import {fileUpload} from "../../../services/file.upload.service";
 
 @Component({
   moduleId:module.id,
@@ -12,7 +12,7 @@ import {ToastsManager} from "ng2-toastr";
 export class UploadComponent implements OnInit
 {
   private image:any;
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef)
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,private uploader:fileUpload)
   {
     this.toastr.setRootViewContainerRef(vcr);
   }
@@ -20,15 +20,15 @@ export class UploadComponent implements OnInit
 
   imageUploaded($event:any):void
   {
-    this.image = $event.file.name;
+    this.image = $event.src;
   }
 
-  detect():void
+  detect():any
   {
     if(this.image)
     {
+      this.uploader.upload(this.image);
       this.toastr.success('Yay!','Image Upload Successful');
-      console.log(this.image);
     }
     else
     {

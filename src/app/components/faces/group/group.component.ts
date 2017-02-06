@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {fileUpload} from "../../../services/file.upload.service";
 import {ToastsManager} from "ng2-toastr";
+import {ImageModel} from "../../../models/image.model";
 
 
 @Component({
@@ -12,6 +13,8 @@ import {ToastsManager} from "ng2-toastr";
 export class GroupComponent implements OnInit
 {
   private image:any;
+  imageArray:any[] = [];
+  currentImage:ImageModel;
   constructor(private uploader:fileUpload,public toastr: ToastsManager, vcr: ViewContainerRef)
   {
     this.toastr.setRootViewContainerRef(vcr);
@@ -20,13 +23,19 @@ export class GroupComponent implements OnInit
 
   imageUploaded($event:any):void
   {
-    this.image = $event.file.name;
+    this.imageArray.push(
+      this.currentImage =
+        {
+          name:$event.file.name,
+          url:$event.src
+        });
   }
 
-  detect():void
+  group():void
   {
-    if(this.image)
+    if(this.imageArray)
     {
+      this.uploader.group(this.imageArray);
       this.toastr.success('Yay!','Image Upload Successful');
     }
     else

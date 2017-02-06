@@ -22,37 +22,37 @@
         <form (ngSubmit)="detect(detectFeaturesForm.value)" #detectFeaturesForm="ngForm">
           <div class="checkbox">
             <label class="active">
-              <input type="checkbox" [(ngModel)]="features.age" name="age" checked="checked">Age
+              <input type="checkbox" [(ngModel)]="formModel.age" name="age" checked="checked">Age
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox" [(ngModel)]="features.glassed" name="glassed" >Glassed
+              <input type="checkbox" [(ngModel)]="formModel.glassed" name="glassed" >Glassed
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox" [(ngModel)]="features.facial_hair" name="facial_hair" >Facial Hair
+              <input type="checkbox" [(ngModel)]="formModel.facial_hair" name="facial_hair" >Facial Hair
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox" [(ngModel)]="features.smile" name="smile" >Smile
+              <input type="checkbox" [(ngModel)]="formModel.smile" name="smile" >Smile
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox" [(ngModel)]="features.head_pose" name="head_pose" >Head Pose
+              <input type="checkbox" [(ngModel)]="formModel.head_pose" name="head_pose" >Head Pose
             </label>
           </div>
 
           <div class="checkbox">
             <label>
-              <input type="checkbox" [(ngModel)]="features.gender" name="gender" >Gender
+              <input type="checkbox" [(ngModel)]="formModel.gender" name="gender" >Gender
             </label>
           </div>
 

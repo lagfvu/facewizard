@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewContainerRef, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ToastsManager} from "ng2-toastr";
 
+import {fileUpload} from "../../../services/file.upload.service";
+
 
 @Component({
   moduleId:module.id,
@@ -13,9 +15,9 @@ export class VerifyComponent implements OnInit
 {
   private query:any;
   private verify:any;
+  imageArray:any[] = [];
 
-
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,private uploader:fileUpload) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -23,12 +25,12 @@ export class VerifyComponent implements OnInit
 
   queryUploaded($event):void
   {
-    this.query = $event.file.name;
+    this.query = $event.src;
   }
 
   verifyUploaded($event):void
   {
-    this.verify = $event.file.name;
+    this.verify = $event.src;
   }
 
   detect():void
@@ -36,6 +38,10 @@ export class VerifyComponent implements OnInit
 
     if(this.query && this.verify)
     {
+     this.imageArray.push(this.query);
+     this.imageArray.push(this.verify);
+
+     this.uploader.verify(this.imageArray);
       this.toastr.success('Yay!','Image Upload Successful');
     }
     else

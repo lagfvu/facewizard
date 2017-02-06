@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ToastsManager} from "ng2-toastr";
+import {fileUpload} from "../../../services/file.upload.service";
 
 @Component({
   selector: 'app-identify',
@@ -12,7 +13,7 @@ export class IdentifyComponent implements OnInit {
   private state:boolean;
   private imgsrc:string;
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef)
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,private uploader:fileUpload)
   {
     this.toastr.setRootViewContainerRef(vcr);
   }
@@ -30,6 +31,8 @@ export class IdentifyComponent implements OnInit {
   {
     if(this.image)
     {
+
+      this.uploader.identifty(this.imgsrc);
       this.toastr.success('Yay!','Image Upload Successful');
       this.state = true;
     }

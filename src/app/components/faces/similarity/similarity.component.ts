@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ToastsManager} from "ng2-toastr";
+import {fileUpload} from "../../../services/file.upload.service";
 
 @Component({
   selector: 'app-similarity',
@@ -10,8 +11,11 @@ export class SimilarityComponent implements OnInit {
   private query:any;
   private verify:any;
 
+  private imageArray:string[]=[];
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+
+
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,private uploader:fileUpload) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -19,19 +23,23 @@ export class SimilarityComponent implements OnInit {
 
   queryUploaded($event):void
   {
-    this.query = $event.file.name;
+    this.query = $event.src;
   }
 
   verifyUploaded($event):void
   {
-    this.verify = $event.file.name;
+    this.verify = $event.src;
   }
 
-  detect():void
+  similarity():void
   {
 
     if(this.query && this.verify)
     {
+      this.imageArray.push(this.query);
+      this.imageArray.push(this.verify);
+
+      this.uploader.similarity(this.imageArray);
       this.toastr.success('Yay!','Image Upload Successful');
     }
     else

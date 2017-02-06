@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Detection_features} from "../../../models/detection-features.model";
 import {ToastsManager} from "ng2-toastr";
+import {fileUpload} from "../../../services/file.upload.service";
 
 @Component({
   moduleId:module.id,
@@ -10,11 +11,14 @@ import {ToastsManager} from "ng2-toastr";
 })
 export class DetectComponent implements OnInit
 {
-  private features:Detection_features;
+  private formModel:Detection_features;
   private image:any;
   private state:boolean;
   private imgsrc:string;
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef)
+  private dataModel:{}={};
+
+
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,private uploader:fileUpload)
   {
     this.toastr.setRootViewContainerRef(vcr);
   }
@@ -23,15 +27,16 @@ export class DetectComponent implements OnInit
   {
     this.state = false;
 
-    this.features = {
+    this.formModel = {
       age:false,
       gender:false,
       smile:false,
       head_pose:false,
       facial_hair:false,
-      glassed:false
-
+      glassed:false,
+      imgSrc:''
     }
+
   }
   imageUploaded($event:any):void
   {
@@ -43,6 +48,12 @@ export class DetectComponent implements OnInit
   {
     if(this.image)
     {
+      model.imgSrc = this.imgsrc;
+
+
+      this.uploader.detect(model);
+
+
       this.toastr.success('Yay!','Image Upload Successful');
       this.state = true;
     }

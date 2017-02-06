@@ -2,6 +2,7 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {TrainingModel} from "../../../models/train.model";
 import {ImageModel} from "../../../models/image.model";
 import {ToastsManager} from "ng2-toastr";
+import {fileUpload} from "../../../services/file.upload.service";
 
 @Component({
   selector: 'app-train',
@@ -15,7 +16,7 @@ export class TrainComponent implements OnInit {
   imageArray:any[] = [];
   currentImage:ImageModel;
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef)
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,private uploader:fileUpload)
   {
     this.toastr.setRootViewContainerRef(vcr);
   }

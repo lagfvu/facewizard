@@ -7,7 +7,8 @@ export class Detection_features
     public facial_hair:boolean,
     public glassed:boolean,
     public head_pose:boolean,
-    public smile:boolean
+    public smile:boolean,
+    public imgSrc:string
   )
   {}
 }
