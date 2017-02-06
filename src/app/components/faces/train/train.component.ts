@@ -3,6 +3,7 @@ import {TrainingModel} from "../../../models/train.model";
 import {ImageModel} from "../../../models/image.model";
 import {ToastsManager} from "ng2-toastr";
 import {fileUpload} from "../../../services/file.upload.service";
+import {trainVM} from "./train.viewModel";
 
 @Component({
   selector: 'app-train',
@@ -13,6 +14,7 @@ import {fileUpload} from "../../../services/file.upload.service";
 export class TrainComponent implements OnInit {
 
   private train:TrainingModel;
+  private trainVM:trainVM;
   imageArray:any[] = [];
   currentImage:ImageModel;
 
@@ -27,6 +29,13 @@ export class TrainComponent implements OnInit {
       groupName:'',
       groupDesc:'',
       personName:''
+    }
+
+    this.trainVM = {
+      groupName:'',
+      groupDesc:'',
+      personName:'',
+      imgSrc:[]
     }
   }
 
@@ -47,7 +56,12 @@ export class TrainComponent implements OnInit {
 
   trainer(model:TrainingModel):void
   {
-    console.log(model);
+    this.trainVM.groupName = model.groupName;
+    this.trainVM.groupDesc = model.groupDesc;
+    this.trainVM.personName = model.personName;
+    this.trainVM.imgSrc = this.imageArray;
+
+    this.uploader.train(this.trainVM);
   }
 
 }
