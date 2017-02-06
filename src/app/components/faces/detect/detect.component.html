@@ -5,9 +5,10 @@
   <div class="panel panel-info">
 
     <div class="panel-heading">
-      <h3 class="panel-title">Panel title</h3>
+      <h3 class="panel-title">Detect</h3>
     </div>
-
+    <p>This feature allows the user to upload a single image and then select features to detect within that image.</p>
+    <hr>
     <image-upload
       [preview]="true"
       [max]="1"
@@ -55,8 +56,17 @@
           </div>
 
           <hr>
-          <button class="btn btn-default" type="submit">Button</button>
+          <button class="btn btn-default" type="submit">Upload</button>
         </form>
+      <hr>
+      <br>
+
+      <div class="portfolio" *ngIf="state">
+        <div class="page-header">{{image}}</div>
+        <div class="portfolio-holder" id="portfolio">
+          <img class="materialboxed responsive-img" src="{{imgsrc}}">
+        </div>
+      </div>
     </div>
 
   </div>

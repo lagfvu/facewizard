@@ -11,10 +11,14 @@ export class DetectComponent implements OnInit
 {
   private features:Detection_features;
   private image:any;
+  private state:boolean;
+  private imgsrc:string;
   constructor() {}
 
   ngOnInit()
   {
+    this.state = false;
+
     this.features = {
       age:false,
       gender:false,
@@ -27,13 +31,20 @@ export class DetectComponent implements OnInit
   }
   imageUploaded($event:any):void
   {
-    this.image = $event.file;
+    this.image = $event.file.name;
+    this.imgsrc = $event.src;
   }
 
   detect(model:Detection_features):void
   {
-    console.log(model,this.image);
+    if(this.image)
+    {
+      console.log(model,this.image);
+      this.state = true;
+    }
 
   }
+
+
 
 }
