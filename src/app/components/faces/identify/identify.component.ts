@@ -31,7 +31,6 @@ export class IdentifyComponent implements OnInit {
   {
     if(this.image)
     {
-
       this.uploader.identifty(this.imgsrc);
       this.toastr.success('Yay!','Image Upload Successful');
       this.state = true;

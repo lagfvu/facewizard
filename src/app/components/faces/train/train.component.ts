@@ -28,7 +28,6 @@ export class TrainComponent implements OnInit {
       groupDesc:'',
       personName:''
     }
-
   }
 
   imageUploaded($event):void
@@ -48,7 +47,7 @@ export class TrainComponent implements OnInit {
 
   trainer(model:TrainingModel):void
   {
-    console.log(model,this.imageArray);
+    console.log(model);
   }
 
 }
