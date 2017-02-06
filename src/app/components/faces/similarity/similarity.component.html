@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h2>Similarity Module</h2>
+</div>
+<div class="sub-header">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Panel title</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-lg-6">
+          <image-upload
+            [preview]="true"
+            [max]="1"
+            [buttonCaption]="'Select Query Image!'"
+            [dropBoxMessage]="'Or Drop your Query image here!'"
+            (onFileUploadFinish)="queryUploaded($event)"
+            (onRemove)="queryRemoved($event)"></image-upload>
+        </div>
+        <div class="col-md-6 col-sm-12 col-lg-6">
+          <image-upload
+            [preview]="true"
+            [max]="100"
+            [buttonCaption]="'Select Images to search!'"
+            [dropBoxMessage]="'Or Drop Images to search here!'"
+            (onFileUploadFinish)="verifyUploaded($event)"
+            (onRemove)="verificationRemoved($event)"></image-upload>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <button class="btn btn-default" type="submit" (click)="detect()">Upload</button>
+  </div>
+</div>
