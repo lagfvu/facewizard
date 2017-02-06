@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {fileUpload} from "../../../services/file.upload.service";
+import {ToastsManager} from "ng2-toastr";
 
 
 @Component({
@@ -10,13 +11,31 @@ import {fileUpload} from "../../../services/file.upload.service";
 })
 export class GroupComponent implements OnInit
 {
-  private images:any;
-  constructor(private uploader:fileUpload) { }
-
+  private image:any;
+  constructor(private uploader:fileUpload,public toastr: ToastsManager, vcr: ViewContainerRef)
+  {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
   ngOnInit() {}
 
   imageUploaded($event:any):void
   {
-    this.uploader.test($event);
+    this.image = $event.file.name;
+  }
+
+  detect():void
+  {
+    if(this.image)
+    {
+      this.toastr.success('Yay!','Image Upload Successful');
+    }
+    else
+    {
+      this.toastr.error('Oops!','You forgot to select your images');
+    }
+  }
+  imageRemoved($event):void{
+    this.image = null;
+    this.toastr.info('Image removed');
   }
 }

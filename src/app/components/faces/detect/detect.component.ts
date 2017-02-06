@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Detection_features} from "../../../models/detection-features.model";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   moduleId:module.id,
@@ -13,7 +14,10 @@ export class DetectComponent implements OnInit
   private image:any;
   private state:boolean;
   private imgsrc:string;
-  constructor() {}
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef)
+  {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit()
   {
@@ -39,12 +43,19 @@ export class DetectComponent implements OnInit
   {
     if(this.image)
     {
+      this.toastr.success('Yay!','Image Upload Successful');
       console.log(model,this.image);
       this.state = true;
     }
-
+    else
+    {
+      this.toastr.error('Oops!','You forgot to select an image');
+    }
   }
 
-
+  imageRemoved($event):void{
+    this.image = null;
+    this.toastr.info('Image removed');
+  }
 
 }

@@ -14,7 +14,8 @@
             [max]="1"
             [buttonCaption]="'Select Query Image!'"
             [dropBoxMessage]="'Or Drop your Query image here!'"
-            (onFileUploadFinish)="queryUploaded($event)"></image-upload>
+            (onFileUploadFinish)="queryUploaded($event)"
+            (onRemove)="queryRemoved($event)"></image-upload>
         </div>
         <div class="col-md-6 col-sm-12 col-lg-6">
           <image-upload
@@ -22,12 +23,13 @@
             [max]="1"
             [buttonCaption]="'Select Verification Image!'"
             [dropBoxMessage]="'Or Drop your verification image here!'"
-            (onFileUploadFinish)="verifyUploaded($event)"></image-upload>
+            (onFileUploadFinish)="verifyUploaded($event)"
+            (onRemove)="verificationRemoved($event)"></image-upload>
         </div>
       </div>
       </div>
     </div>
     <div class="panel-footer">
-      <button class="btn btn-default" type="submit">Button</button>
+      <button class="btn btn-default" type="submit" (click)="detect()">Upload</button>
     </div>
   </div>

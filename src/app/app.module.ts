@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -15,6 +15,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {ImageUploadModule} from "angular2-image-upload";
 import {DemoAuth} from "./services/demo.auth.service";
 import {fileUpload} from "./services/file.upload.service";
+import {ToastModule} from "ng2-toastr";
 
 @NgModule({
   declarations: [
@@ -25,9 +26,11 @@ import {fileUpload} from "./services/file.upload.service";
     FormsModule,
     HttpModule,
     routing,
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    ToastModule.forRoot()
   ],
   providers: [appRoutingProviders,DemoAuth,fileUpload],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

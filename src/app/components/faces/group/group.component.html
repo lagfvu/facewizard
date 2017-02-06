@@ -4,7 +4,7 @@
 <div class="sub-header">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title">Panel title</h3>
+      <h3 class="panel-title">Group</h3>
     </div>
     <div class="panel-body">
       <image-upload
@@ -12,10 +12,11 @@
         [max]="100"
         [buttonCaption]="'Select Your Images here!'"
         [dropBoxMessage]="'Or Drop your images here!'"
-        (onFileUploadFinish)="imageUploaded($event)"></image-upload>
+        (onFileUploadFinish)="imageUploaded($event)"
+        (onRemove)="imageRemoved($event)"></image-upload>
     </div>
     <div class="panel-footer">
-      <button class="btn btn-default" type="submit">Button</button>
+      <button class="btn btn-default" type="submit" (click)="detect()">Upload</button>
     </div>
   </div>
 </div>

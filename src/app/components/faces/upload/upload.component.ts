@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ToastsManager} from "ng2-toastr";
 
 
 @Component({
@@ -10,11 +11,33 @@ import {Component, OnInit} from '@angular/core';
 
 export class UploadComponent implements OnInit
 {
-  constructor(){}
+  private image:any;
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef)
+  {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
   ngOnInit() {}
 
   imageUploaded($event:any):void
   {
-    console.log($event.file);
+    this.image = $event.file.name;
+  }
+
+  detect():void
+  {
+    if(this.image)
+    {
+      this.toastr.success('Yay!','Image Upload Successful');
+      console.log(this.image);
+    }
+    else
+    {
+      this.toastr.error('Oops!','You forgot to select an image');
+    }
+  }
+
+  imageRemoved($event):void{
+    this.image = null;
+    this.toastr.info('Image removed');
   }
 }

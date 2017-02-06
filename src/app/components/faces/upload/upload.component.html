@@ -13,10 +13,11 @@
       [max]="1"
       [buttonCaption]="'Select Your Image!'"
       [dropBoxMessage]="'Or Drop your image here!'"
-      (onFileUploadFinish)="imageUploaded($event)"></image-upload>
+      (onFileUploadFinish)="imageUploaded($event)"
+      (onRemove)="imageRemoved($event)"></image-upload>
     </div>
     <div class="panel-footer">
-      <button class="btn btn-default" type="submit">Button</button>
+      <button class="btn btn-default" type="submit" (click)="detect()">Upload</button>
     </div>
   </div>
 </div>
