@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {routing, appRoutingProviders} from "./routers/app.routes";
@@ -29,6 +29,7 @@ import { IdentifyComponent } from './components/faces/identify/identify.componen
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     routing,
     ImageUploadModule.forRoot(),
     ToastModule.forRoot()

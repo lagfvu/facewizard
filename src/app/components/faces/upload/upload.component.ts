@@ -11,7 +11,7 @@ import {fileUpload} from "../../../services/file.upload.service";
 
 export class UploadComponent implements OnInit
 {
-  private image:any;
+  private image:string;
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef,private uploader:fileUpload)
   {
     this.toastr.setRootViewContainerRef(vcr);
@@ -27,13 +27,26 @@ export class UploadComponent implements OnInit
   {
     if(this.image)
     {
-      this.uploader.upload(this.image);
-      this.toastr.success('Yay!','Image Upload Successful');
+      this.uploader.upload(this.image)
+        .then((res)=>
+        {
+          console.log(res,"logged right");
+          this.toastr.success('Yay!','Image Upload Successful');
+
+        })
+        .catch((err)=>{
+          this.toastr.error('Sorry!','Seems there was a problem');
+        });
+
     }
     else
     {
       this.toastr.error('Oops!','You forgot to select an image');
     }
+  }
+
+  post():any{
+    // this.uploader.postTest();
   }
 
   imageRemoved($event):void{
