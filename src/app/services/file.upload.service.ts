@@ -5,27 +5,26 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
-
-
 @Injectable()
 export class fileUpload
 {
   private serverUrl= "http://localhost:51429/";
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'multipart/form-data'});
+  private request;
   constructor(private http:Http){}
 
   //function to upload image for upload module
-
-  upload(data:string):Promise<any>
+  upload(data:any):Promise<any>
   {
+    var formData = new FormData();
+    formData.append('file',data);
 
+    this.request = this.http.post(this.serverUrl+"api/values",formData,{headers: this.headers});
 
-    return this.http.post(this.serverUrl+"api/values",JSON.stringify({img:data}),{headers: this.headers})
+    return this.http.post(this.serverUrl+"api/values",formData,{headers: this.headers})
       .toPromise()
       .then(response => response)
       .catch(this.handleError);
-
-
   }
 
   //function to upload image for detect module

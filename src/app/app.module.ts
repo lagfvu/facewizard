@@ -31,8 +31,8 @@ import { IdentifyComponent } from './components/faces/identify/identify.componen
     HttpModule,
     JsonpModule,
     routing,
+    ToastModule.forRoot(),
     ImageUploadModule.forRoot(),
-    ToastModule.forRoot()
   ],
   providers: [appRoutingProviders,DemoAuth,fileUpload],
   bootstrap: [AppComponent],

@@ -11,7 +11,7 @@ import {fileUpload} from "../../../services/file.upload.service";
 
 export class UploadComponent implements OnInit
 {
-  private image:string;
+  private image:any;
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef,private uploader:fileUpload)
   {
     this.toastr.setRootViewContainerRef(vcr);
@@ -20,7 +20,7 @@ export class UploadComponent implements OnInit
 
   imageUploaded($event:any):void
   {
-    this.image = $event.src;
+    this.image = $event.file;
   }
 
   detect():any
